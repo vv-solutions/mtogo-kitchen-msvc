@@ -93,7 +93,7 @@ public class MessageServiceImpl implements MessageService {
     @Override
     public void listenOnTicketCreationQueue() {
         try {
-            channel.basicConsume(configuration.queues().ticketCreation().queue(), true, new DefaultConsumer(channel) {
+            channel.basicConsume(configuration.queues().ticketCreation().queue(), false, new DefaultConsumer(channel) {
 
                 @Override
                 public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException {
@@ -108,7 +108,8 @@ public class MessageServiceImpl implements MessageService {
                     ticketDTO = ticketFacade.saveTicket(ticketDTO);
 
                     logger.infof("ticket: created new ticket with id [%s]",ticketDTO.getId());
-
+                    
+                    channel.basicAck(envelope.getDeliveryTag(),false);
                 }
             });
         } catch (IOException e) {
