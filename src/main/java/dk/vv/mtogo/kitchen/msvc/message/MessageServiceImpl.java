@@ -108,7 +108,7 @@ public class MessageServiceImpl implements MessageService {
                     ticketDTO = ticketFacade.saveTicket(ticketDTO);
 
                     logger.infof("ticket: created new ticket with id [%s]",ticketDTO.getId());
-                    
+
                     channel.basicAck(envelope.getDeliveryTag(),false);
                 }
             });
