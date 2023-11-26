@@ -1,0 +1,19 @@
+quarkus:
+  datasource:
+    db-kind: h2
+    jdbc:
+      url: jdbc:h2:mem:db/kitchen_svc_db
+      min-size: 1
+      max-size: 100
+
+  hibernate-orm:
+    dialect: org.hibernate.dialect.H2Dialect
+    #    sql-load-script: sql/init.sql
+    database:
+      generation: update
+
+  flyway:
+    migrate-at-start: true
+    baseline-on-migrate: true
+    out-of-order: true
+    create-schemas: false

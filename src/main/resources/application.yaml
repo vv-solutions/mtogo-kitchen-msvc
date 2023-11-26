@@ -1,0 +1,80 @@
+
+quarkus:
+  http:
+    port: 8080
+  smallrye-openapi:
+    info-title: kitchen-svc
+    auto-add-security-requirement: false
+
+  swagger-ui:
+    always-include: true
+    path: /swagger
+
+
+  datasource:
+    db-kind: postgresql
+    jdbc:
+      # Is set to 5 as we have 112 connections in total
+      initial-size: 1
+      min-size: 1
+      max-size: 5
+      url: ${MTOGO_DB_BASE_URL}/kitchen_svc_db
+    username: ${MTOGO_DB_USERNAME}
+    password: ${MTOGO_DB_PASSWORD}
+
+    transaction-manager:
+      default-transaction-timeout: 300s
+  hibernate-orm:
+    database:
+      generation: update
+
+
+  rest-client:
+    product-api:
+      url: ${MTOGO_PRODUCT_SERVICE_URL}
+
+kitchen:
+  msvc:
+    queues:
+      ticketResponse:
+        exchange: ticket.dx
+        routingKey: ticket.response
+
+      ticketCreation:
+        queue: ticket.creation.q
+        exchange: ticket.dx
+        routingKey: ticket.creation
+
+
+"%dev":
+  quarkus:
+    log:
+      level: INFO
+
+      console:
+        json: false
+    rabbitmqclient:
+      virtual-host: ${MTOGO_RABBITMQ_VHOST}
+      username: ${MTOGO_RABBITMQ_USERNAME}
+      password: ${MTOGO_RABBITMQ_PASSWORD}
+      hostname: ${MTOGO_RABBITMQ_HOST}
+      port: ${MTOGO_RABBITMQ_PORT}
+      tls:
+        enabled: false
+    hibernate-orm:
+      database:
+        default-schema: "kitchen"
+
+"%prod":
+  quarkus:
+    rabbitmqclient:
+      virtual-host: ${MTOGO_RABBITMQ_VHOST}
+      username: ${MTOGO_RABBITMQ_USERNAME}
+      password: ${MTOGO_RABBITMQ_PASSWORD}
+      hostname: ${MTOGO_RABBITMQ_HOST}
+      port: ${MTOGO_RABBITMQ_PORT}
+      tls:
+        enabled: false
+    hibernate-orm:
+      database:
+        default-schema: "kitchen"
