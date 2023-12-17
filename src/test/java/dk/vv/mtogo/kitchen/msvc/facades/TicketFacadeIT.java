@@ -4,20 +4,14 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import dk.vv.common.data.transfer.objects.kitchen.TicketDTO;
 import dk.vv.common.data.transfer.objects.kitchen.TicketLineDTO;
 import dk.vv.common.data.transfer.objects.kitchen.TicketResponseDTO;
-import dk.vv.mtogo.kitchen.msvc.api.ProductService;
-import dk.vv.mtogo.kitchen.msvc.api.ProductServiceMock;
 
 import dk.vv.mtogo.kitchen.msvc.enums.TicketStatus;
-import dk.vv.mtogo.kitchen.msvc.pojos.Ticket;
 import dk.vv.mtogo.kitchen.msvc.repsitories.TicketRepository;
-import io.quarkus.test.InjectMock;
-import io.quarkus.test.junit.QuarkusIntegrationTest;
 import io.quarkus.test.junit.QuarkusTest;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import org.flywaydb.core.Flyway;
 import org.junit.jupiter.api.*;
-import org.mockito.InjectMocks;
 
 import java.time.LocalDateTime;
 

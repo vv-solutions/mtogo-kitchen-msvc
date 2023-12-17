@@ -10,7 +10,7 @@ import java.util.List;
 @Mock
 @RestClient
 @ApplicationScoped
-public class ProductServiceMock implements ProductService{
+public class ProductServiceStub implements ProductService{
 
 
     @Override
