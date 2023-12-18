@@ -24,9 +24,6 @@ public class DomainResourceIT {
     @Inject
     protected Flyway flyway;
 
-    @Inject
-    TicketRepository ticketRepository;
-
     @BeforeEach
     public void before() {
         flyway.migrate();
@@ -38,6 +35,9 @@ public class DomainResourceIT {
         flyway.clean();
     }
 
+
+    @Inject
+    TicketRepository ticketRepository;
 
 
     @Test
@@ -135,10 +135,7 @@ public class DomainResourceIT {
 
         var ticket = ticketRepository.findById(Long.parseLong("1"));
 
-        System.out.println(ticket);
-
         //Assert
-
         Assertions.assertEquals(2,ticket.getStatus());
         Assertions.assertEquals(pickupTime,ticket.getPickupTime());
 

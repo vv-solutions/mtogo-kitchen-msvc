@@ -121,6 +121,7 @@ public class TicketFacadeIT {
     }
 
     @Test
+    @Transactional
     void when_update_status_then_status_should_be_persisted(){
 
         //ACT
@@ -134,6 +135,7 @@ public class TicketFacadeIT {
     }
 
     @Test
+    @Transactional
     void when_update_pickup_time_then_pickup_time_should_be_persisted(){
         //Arrange
         LocalDateTime pickupTime = LocalDateTime.of(2023,10,12,12,53);
