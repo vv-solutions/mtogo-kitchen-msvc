@@ -1,6 +1,6 @@
 quarkus:
   http:
-    port: 8086
+#    port: 8086
   smallrye-openapi:
     info-title: kitchen-svc
     auto-add-security-requirement: false
