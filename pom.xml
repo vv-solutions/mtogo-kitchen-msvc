@@ -7,7 +7,7 @@
     <artifactId>parent-msvc-pom</artifactId>
     <version>1.0.30</version>
   </parent>
-  <artifactId>mtogo-kicthen-msvc</artifactId>
+  <artifactId>mtogo-kitchen-msvc</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <dependencies>
     <dependency>
