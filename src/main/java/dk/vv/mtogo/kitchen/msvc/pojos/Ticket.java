@@ -75,6 +75,7 @@ public class Ticket {
         ticketDTO.setComment(this.comment);
         ticketDTO.setPickupTime(this.pickupTime);
         ticketDTO.setStatus(this.status);
+        ticketDTO.setCreateStamp(this.createStamp);
         if(!this.getTicketLines().isEmpty()){
             this.ticketLines.forEach(tl ->{
                 ticketDTO.addTicketLine(tl.toDto());
