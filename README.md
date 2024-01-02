@@ -13,3 +13,4 @@ You can run your application in dev mode that enables live coding using:
 
 ### About
 This is the service that is responsible for handling kitchen events, that includes ticket creation, ticket accepted, ticket denied, ticket done.
+![hexagonal-architecture.png](images%2Fhexagonal-architecture.png)
